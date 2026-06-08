@@ -26,6 +26,7 @@ const competencies = defineCollection({
   schema: z.object({
     title: z.string(),
     items: z.array(z.string()),
+    "aditional-technologies": z.array(z.string()).optional(),
   }),
 });
 

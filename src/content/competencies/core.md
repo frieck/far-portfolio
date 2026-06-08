@@ -17,6 +17,7 @@ items:
   - "Product Ownership"
   - "Technical Mentoring"
   - "Cross-Functional Collaboration"
+aditional-technologies:
   - "Java"
   - "Angular"
   - "Spring Boot"

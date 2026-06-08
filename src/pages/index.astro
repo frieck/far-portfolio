@@ -67,8 +67,24 @@ const emailCodes = profile.email
 
   <section class="reveal">
     <h3>{competencies.title}</h3>
-    <article class="card chips tilt-card">
-      {competencies.items.map((item) => <span>{item}</span>)}
+    <article class="card competency-card tilt-card">
+      <div class="chips">
+        {competencies.items.map((item) => <span>{item}</span>)}
+      </div>
+      {
+        competencies["aditional-technologies"] && (
+          <div class="competency-secondary">
+            <div class="section-divider">
+              <span>Additional Technologies</span>
+            </div>
+            <div class="chips chips-secondary">
+              {competencies["aditional-technologies"].map((item) => (
+                <span>{item}</span>
+              ))}
+            </div>
+          </div>
+        )
+      }
     </article>
   </section>
 
