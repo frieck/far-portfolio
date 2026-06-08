@@ -7,9 +7,9 @@ const profile = defineCollection({
     base: "./src/content/profile",
   }),
   schema: z.object({
+    bootMessage: z.string(),
     name: z.string(),
     role: z.string(),
-    tag: z.string(),
     lead: z.string(),
     email: z.string().email(),
     linkedin: z.string().url(),
