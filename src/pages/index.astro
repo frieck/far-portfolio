@@ -133,6 +133,15 @@ const emailCodes = profile.email
 
     const boot = document.querySelector("[data-boot-terminal]");
     const bootOutput = document.querySelector("[data-boot-output]");
+    const revealVisibleContent = () => {
+      document.querySelectorAll(".reveal").forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add("is-visible");
+        }
+      });
+    };
+
     if (boot && bootOutput) {
       const text = boot.dataset.bootText || "";
       const duration = Number(boot.dataset.bootDuration || 3600);
@@ -156,6 +165,7 @@ const emailCodes = profile.email
         window.scrollTo({ top: 0, left: 0, behavior: "instant" });
         document.body.classList.remove("is-booting");
         document.body.classList.add("boot-complete");
+        revealVisibleContent();
         window.setTimeout(() => {
           document.body.classList.remove("boot-complete");
         }, 1600);
@@ -164,6 +174,7 @@ const emailCodes = profile.email
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
       document.body.classList.remove("is-booting");
       document.body.classList.add("boot-complete");
+      revealVisibleContent();
       window.setTimeout(() => {
         document.body.classList.remove("boot-complete");
       }, 1600);

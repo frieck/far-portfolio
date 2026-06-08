@@ -194,27 +194,62 @@ body.is-booting .container > :not(.boot-terminal) {
   visibility: hidden;
 }
 
-body.boot-complete .container > * > :is(.card, h3) {
+body.boot-complete .container > :is(.card, section.reveal),
+body.boot-complete .container > section:not(.reveal) > h3,
+body.boot-complete
+  .container
+  > section:not(.reveal)
+  > .timeline
+  > .timeline-item.reveal.is-visible {
   animation: bootCascade 0.78s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-body.boot-complete .container > *:nth-child(1) > :is(.card, h3) {
+body.boot-complete .container > .card > *,
+body.boot-complete .container > section.reveal > h3,
+body.boot-complete .container > section.reveal > .card > *,
+body.boot-complete .container > section.reveal > .timeline > .card > *,
+body.boot-complete
+  .container
+  > section:not(.reveal)
+  > .timeline
+  > .timeline-item.reveal.is-visible
+  > * {
+  animation: bootContentFade 0.72s ease both;
+  animation-delay: inherit;
+}
+
+body.boot-complete .container > :is(.card, section.reveal):nth-of-type(1),
+body.boot-complete .container > section:not(.reveal):nth-of-type(4) > h3 {
   animation-delay: 0.04s;
 }
 
-body.boot-complete .container > *:nth-child(2) > :is(.card, h3) {
+body.boot-complete .container > :is(.card, section.reveal):nth-of-type(2),
+body.boot-complete .container > section:not(.reveal):nth-of-type(5) > h3 {
   animation-delay: 0.16s;
 }
 
-body.boot-complete .container > *:nth-child(3) > :is(.card, h3) {
+body.boot-complete .container > :is(.card, section.reveal):nth-of-type(3),
+body.boot-complete .container > section:not(.reveal):nth-of-type(6) > h3 {
   animation-delay: 0.28s;
 }
 
-body.boot-complete .container > *:nth-child(4) > :is(.card, h3) {
+body.boot-complete .container > :is(.card, section.reveal):nth-of-type(4),
+body.boot-complete .container > section:not(.reveal):nth-of-type(7) > h3,
+body.boot-complete
+  .container
+  > section:not(.reveal)
+  > .timeline
+  > .timeline-item.reveal.is-visible:nth-of-type(1) {
   animation-delay: 0.4s;
 }
 
-body.boot-complete .container > *:nth-child(n + 5) > :is(.card, h3) {
+body.boot-complete .container > :is(.card, section.reveal):nth-of-type(n + 5),
+body.boot-complete .container > section:not(.reveal):nth-of-type(n + 8) > h3,
+body.boot-complete
+  .container
+  > section:not(.reveal)
+  > .timeline
+  > .timeline-item.reveal.is-visible:nth-of-type(n + 2) {
   animation-delay: 0.52s;
 }
 
@@ -246,7 +281,7 @@ body:not(.is-booting) .boot-terminal {
   border-radius: 8px;
   background: rgba(1, 10, 7, 0.62);
   -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(2px);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.035),
     0 0 40px rgba(var(--neon-rgb), 0.12);
@@ -433,18 +468,30 @@ li {
 
 /* Reveal animation */
 .reveal {
-  opacity: 0;
-  transform: translateY(14px) scale(0.99);
+  transform: translateY(22px) scale(0.985);
   /* filter: blur(2px); */
   transition:
-    opacity 0.55s ease,
-    transform 0.55s ease,
+    transform 0.68s cubic-bezier(0.16, 1, 0.3, 1),
     filter 0.55s ease;
 }
 .reveal.is-visible {
-  opacity: 1;
   transform: none;
   filter: none;
+}
+
+.card.reveal > *,
+section.reveal > h3,
+section.reveal > .card > *,
+section.reveal > .timeline > .card > * {
+  opacity: 0;
+  transition: opacity 0.62s ease 0.08s;
+}
+
+.card.reveal.is-visible > *,
+section.reveal.is-visible > h3,
+section.reveal.is-visible > .card > *,
+section.reveal.is-visible > .timeline > .card > * {
+  opacity: 1;
 }
 
 .glitch {
@@ -496,6 +543,15 @@ li {
 }
 @keyframes bootCascade {
   0% {
+    transform: translateY(22px) scale(0.985);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes bootContentFade {
+  0%,
+  18% {
     opacity: 0;
   }
   100% {
