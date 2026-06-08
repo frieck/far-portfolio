@@ -34,10 +34,8 @@ felipe.farsystems.com.br
 DNS record for the `farsystems.com.br` zone:
 
 ```txt
-CNAME  felipe  <github-username>.github.io
+CNAME  felipe  frieck.github.io
 ```
-
-Replace `<github-username>` with the GitHub account or organization that owns the Pages site.
 
 ## License
 
