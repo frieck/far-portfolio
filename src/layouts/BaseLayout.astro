@@ -1,0 +1,27 @@
+---
+import "../styles/global.css";
+import SciFiBackground from "../components/SciFiBackground";
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#020705" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+  </head>
+  <body class="theme-green">
+    <SciFiBackground client:load />
+    <div class="noise"></div>
+    <div class="scanlines"></div>
+    <div class="grid-bg"></div>
+
+    <main class="container">
+      <slot />
+    </main>
+  </body>
+</html>

@@ -1,17 +1,145 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection, getEntry, render } from "astro:content";
 
+const profileEntry = await getEntry("profile", "home");
+const competenciesEntry = await getEntry("competencies", "core");
+const experience = (await getCollection("experience")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const education = (await getCollection("education")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+if (!profileEntry || !competenciesEntry) {
+  throw new Error(
+    "Missing content in src/content/profile/home.md or src/content/competencies/core.md",
+  );
+}
+
+const profile = profileEntry.data;
+const competencies = competenciesEntry.data;
+const { Content: ProfileContent } = await render(profileEntry);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Felipe Augusto Rieck | FAR"
+  description="Felipe Augusto Rieck portfolio — Staff/Principal Full-Stack Engineer."
+>
+  <section class="hero card reveal">
+    <p class="tag">{profile.tag}</p>
+    <h1 class="glitch" data-text={profile.name}>{profile.name}</h1>
+    <h2>{profile.role}</h2>
+    <p class="lead">{profile.lead}</p>
+
+    <div class="hero-actions">
+      <a class="btn primary" href={`mailto:${profile.email}`}>Contact</a>
+      <a class="btn" href={profile.linkedin} target="_blank" rel="noreferrer"
+        >LinkedIn</a
+      >
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h3>Summary</h3>
+    <article class="card prose-invert">
+      <ProfileContent />
+    </article>
+  </section>
+
+  <section class="reveal">
+    <h3>{competencies.title}</h3>
+    <article class="card chips tilt-card">
+      {competencies.items.map((item) => <span>{item}</span>)}
+    </article>
+  </section>
+
+  <section>
+    <h3>Experience</h3>
+    <div class="timeline">
+      {
+        experience.map((item) => (
+          <article class="card timeline-item tilt-card reveal">
+            <div class="timeline-dot" />
+            <h4>{item.data.role}</h4>
+            <p class="company">
+              {item.data.company} · {item.data.period}
+            </p>
+            {item.data.location && <p class="location">{item.data.location}</p>}
+            <ul>
+              {item.data.highlights.map((h) => (
+                <li>{h}</li>
+              ))}
+            </ul>
+            <p class="stack">{item.data.technologies.join(" • ")}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h3>Languages</h3>
+    <article class="card chips tilt-card">
+      <span>Portuguese (Native)</span>
+      <span>English (Full Professional)</span>
+      <span>German (Elementary)</span>
+      <span>Spanish (Limited Working)</span>
+    </article>
+  </section>
+
+  <section class="reveal">
+    <h3>Education</h3>
+    <div class="timeline">
+      {
+        education.map((item) => (
+          <article class="card timeline-item tilt-card">
+            <div class="timeline-dot" />
+            <h4>{item.data.degree}</h4>
+            <p class="company">
+              {item.data.institution} · {item.data.period}
+            </p>
+            <p class="location">{item.data.location}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <script is:inline>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("is-visible");
+        });
+      },
+      { threshold: 0.12 },
+    );
+    reveals.forEach((el) => io.observe(el));
+
+    // Cursor glow
+    const glow = document.getElementById("cursor-glow");
+    window.addEventListener("mousemove", (e) => {
+      glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+
+    // Tilt cards
+    const cards = document.querySelectorAll(".tilt-card");
+    cards.forEach((card) => {
+      card.addEventListener("mousemove", (e) => {
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        const rx = (y / r.height - 0.5) * -8;
+        const ry = (x / r.width - 0.5) * 10;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform =
+          "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)";
+      });
+    });
+  </script>
+</BaseLayout>

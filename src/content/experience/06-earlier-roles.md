@@ -1,0 +1,28 @@
+---
+order: 6
+role: "Software Engineer / Technical Lead / Software Architect"
+company: "Neogrid, TOTVS & CALDSoft Sistemas"
+period: "2007 — 2019"
+location: "Brazil"
+technologies:
+  - "Java"
+  - "PHP"
+  - "SQL"
+  - "Node.js"
+  - "RabbitMQ"
+  - "JavaScript"
+  - "Angular"
+  - "Hibernate"
+  - "Spring Boot"
+  - "C#"
+  - "ASP.NET"
+  - "TDD"
+  - "REST APIs"
+  - "MVC frameworks"
+  - "OpenGL"
+highlights:
+  - "Progressed through software engineering and technical leadership roles building enterprise products across financial services, logistics, and EDI."
+  - "Designed and delivered backend, frontend, and integration solutions for business-critical systems requiring reliability, scalability, and operational continuity."
+  - "Built a strong foundation in full-stack development, software architecture, and technical leadership across JavaScript, Node.js, Java, PHP, SQL, and related web technologies."
+  - "Led engineering efforts, supported modernization initiatives, and contributed to delivery quality across cross-functional and international environments."
+---

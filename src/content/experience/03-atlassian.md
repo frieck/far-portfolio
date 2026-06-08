@@ -1,0 +1,31 @@
+---
+order: 3
+role: "Senior Software Specialist"
+company: "Atlassian (via e-Core)"
+period: "Feb 2021 — Jun 2025"
+location: "Remote, Contractor"
+technologies:
+  - "Node.js"
+  - "React"
+  - "Tailwind"
+  - "Express.js"
+  - "Next.js"
+  - "GraphQL"
+  - "AWS"
+  - "Postgres"
+  - "S3"
+  - "TypeScript"
+  - "Docker"
+  - "Bitbucket"
+  - "CI/CD pipelines"
+  - "Forge"
+  - "Connect"
+  - "TDD"
+  - "REST APIs"
+  - "MVC frameworks"
+highlights:
+  - "Built and evolved developer-facing web tools and internal platforms with focus on usability, maintainability, and workflow efficiency."
+  - "Developed full-stack features using React, TypeScript, Node.js, and GraphQL to improve internal product usability and reduce friction for developers."
+  - "Contributed hands-on to internal tooling and platform improvements in a distributed cloud environment, helping teams work more effectively with APIs, integrations, and developer workflows."
+  - "Partnered on architecture and implementation decisions that improved long-term platform usability, engineering quality, and developer experience."
+---

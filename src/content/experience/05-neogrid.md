@@ -1,0 +1,30 @@
+---
+order: 5
+role: "Senior Software Architect"
+company: "Neogrid"
+period: "Mar 2019 — Nov 2020"
+location: "Porto Alegre, RS"
+technologies:
+  - "Java"
+  - "Spring Boot"
+  - "Quarkus"
+  - "SQL"
+  - "Node.js"
+  - "NestJS"
+  - "RabbitMQ"
+  - "JavaScript"
+  - "TypeScript"
+  - "Angular"
+  - "GraphQL"
+  - "TDD"
+  - "REST APIs"
+  - "MVC frameworks"
+highlights:
+  - "Led frontend and backend architecture decisions for business-critical systems built for strategic customers in the Special Projects division."
+  - "Drove technical initiatives across teams, guiding architecture patterns, implementation approaches, and engineering standards for complex product environments."
+  - "Led the rollout of microservices architecture and mentored engineers across Node.js, NestJS, GraphQL, Spring Boot, and Quarkus."
+  - "Led the front-end modernization of legacy enterprise products, defining a new visual identity and driving the migration from a JSF-based framework to a reusable Angular component architecture."
+  - "Built a shared UI framework and reusable component foundation that improved product consistency, usability, and development speed across multiple applications."
+  - "Partnered with product and engineering stakeholders to translate business requirements into scalable front-end architecture and better user workflows."
+  - "Supported cloud adoption and modernization initiatives, helping teams evolve toward more scalable and maintainable architectures."
+---

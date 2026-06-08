@@ -1,0 +1,15 @@
+---
+order: 4
+role: "IT Consultant"
+company: "Getnet Brazil"
+period: "Nov 2020 — Feb 2021"
+location: "Porto Alegre, RS"
+technologies:
+  - "Architecture assessment"
+  - "Cloud migration"
+  - "Payments systems"
+highlights:
+  - "Supported complex payments and credit card initiatives by helping technical teams evaluate architectural approaches and engineering best practices."
+  - "Contributed to strategic technical decision-making with emphasis on scalability, architecture quality, modernization, and future cloud adoption."
+  - "Represented the company in the evaluation of cloud providers as part of the migration of on-premise services to a public cloud architecture."
+---
