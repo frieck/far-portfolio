@@ -465,6 +465,40 @@ li {
   font-size: 0.86rem;
   background: rgba(9, 22, 38, 0.45);
 }
+.competency-card {
+  display: grid;
+  gap: 12px;
+}
+.competency-secondary {
+  display: grid;
+  gap: 10px;
+}
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: rgba(var(--neon-rgb), 0.18);
+}
+.chips-secondary {
+  gap: 7px;
+}
+.chips-secondary span {
+  color: var(--muted);
+  border-color: rgba(var(--neon-rgb), 0.22);
+  padding: 5px 9px;
+  font-size: 0.78rem;
+  background: rgba(3, 16, 11, 0.24);
+}
 
 /* Reveal animation */
 .reveal {
