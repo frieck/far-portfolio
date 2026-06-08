@@ -3,45 +3,12 @@ import { Stars } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 
-const introTarget = new THREE.Vector3(3.15, 1.05, -2.25);
-let introHasSettled = false;
-
 function WireCore() {
-  const group = useRef<THREE.Group>(null);
   const core = useRef<THREE.Mesh>(null);
   const shell = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
-    const introDelay = 1.4;
-    const introDuration = 1.8;
-    const progress = THREE.MathUtils.clamp(
-      (t - introDelay) / introDuration,
-      0,
-      1,
-    );
-    const eased = 1 - Math.pow(1 - progress, 3);
-
-    if (group.current) {
-      if (introHasSettled) {
-        group.current.position.copy(introTarget);
-        group.current.scale.setScalar(1);
-      } else {
-        group.current.position.set(
-          THREE.MathUtils.lerp(0, introTarget.x, eased),
-          THREE.MathUtils.lerp(0.05, introTarget.y, eased),
-          THREE.MathUtils.lerp(-1.45, introTarget.z, eased),
-        );
-
-        const scale = THREE.MathUtils.lerp(1.16, 1, eased);
-        group.current.scale.setScalar(scale);
-
-        if (progress === 1) {
-          introHasSettled = true;
-        }
-      }
-    }
-
     if (core.current) {
       core.current.rotation.x = t * 0.12;
       core.current.rotation.y = t * 0.18;
@@ -53,15 +20,7 @@ function WireCore() {
   });
 
   return (
-    <group
-      ref={group}
-      position={
-        introHasSettled
-          ? [introTarget.x, introTarget.y, introTarget.z]
-          : [0, 0.05, -1.45]
-      }
-      scale={introHasSettled ? 1 : 1.16}
-    >
+    <group position={[3.15, 1.05, -2.25]}>
       <mesh ref={core}>
         <icosahedronGeometry args={[1.2, 1]} />
         <meshStandardMaterial
