@@ -122,7 +122,10 @@ const { Content: ProfileContent } = await render(profileEntry);
     // Cursor glow
     const glow = document.getElementById("cursor-glow");
     window.addEventListener("mousemove", (e) => {
-      glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      if (glow) {
+        glow.style.left = `${e.clientX}px`;
+        glow.style.top = `${e.clientY}px`;
+      }
     });
 
     // Tilt cards

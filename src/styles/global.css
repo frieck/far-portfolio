@@ -22,7 +22,7 @@ body.theme-green {
   --neon-rgb: 57, 255, 136;
   --neon2-rgb: 18, 196, 127;
   --ok: #b6ff4d;
-  --card: rgba(3, 16, 11, 0.66);
+  --card: rgba(3, 16, 11, 0.4);
   --border: rgba(57, 255, 136, 0.36);
 }
 
@@ -161,11 +161,13 @@ body {
 
 #cursor-glow {
   position: fixed;
+  left: -9999px;
+  top: -9999px;
   width: 220px;
   height: 220px;
   border-radius: 50%;
   pointer-events: none;
-  transform: translate(-9999px, -9999px);
+  transform: translate(-50%, -50%);
   background: radial-gradient(
     circle,
     rgba(var(--neon-rgb), 0.18) 0%,
@@ -362,7 +364,6 @@ li {
   filter: none;
 }
 
-/* Glitch title */
 .glitch {
   position: relative;
   display: inline-block;
