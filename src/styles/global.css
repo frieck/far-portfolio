@@ -194,27 +194,27 @@ body.is-booting .container > :not(.boot-terminal) {
   visibility: hidden;
 }
 
-body.boot-complete .container > * {
+body.boot-complete .container > * > :is(.card, h3) {
   animation: bootCascade 0.78s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-body.boot-complete .container > *:nth-child(1) {
+body.boot-complete .container > *:nth-child(1) > :is(.card, h3) {
   animation-delay: 0.04s;
 }
 
-body.boot-complete .container > *:nth-child(2) {
+body.boot-complete .container > *:nth-child(2) > :is(.card, h3) {
   animation-delay: 0.16s;
 }
 
-body.boot-complete .container > *:nth-child(3) {
+body.boot-complete .container > *:nth-child(3) > :is(.card, h3) {
   animation-delay: 0.28s;
 }
 
-body.boot-complete .container > *:nth-child(4) {
+body.boot-complete .container > *:nth-child(4) > :is(.card, h3) {
   animation-delay: 0.4s;
 }
 
-body.boot-complete .container > *:nth-child(n + 5) {
+body.boot-complete .container > *:nth-child(n + 5) > :is(.card, h3) {
   animation-delay: 0.52s;
 }
 
@@ -497,11 +497,9 @@ li {
 @keyframes bootCascade {
   0% {
     opacity: 0;
-    transform: translateY(18px) scale(0.992);
   }
   100% {
     opacity: 1;
-    transform: none;
   }
 }
 @keyframes driftA {
@@ -557,7 +555,7 @@ li {
   .grid-bg,
   .scanlines,
   .noise,
-  body.boot-complete .container > * {
+  body.boot-complete .container > * > :is(.card, h3) {
     opacity: 1;
     transform: none;
     filter: none;

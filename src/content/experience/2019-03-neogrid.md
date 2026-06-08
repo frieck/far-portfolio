@@ -1,5 +1,5 @@
 ---
-order: 5
+startDate: "2019-03-01"
 role: "Senior Software Architect"
 company: "Neogrid"
 period: "Mar 2019 — Nov 2020"

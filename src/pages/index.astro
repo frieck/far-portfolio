@@ -5,7 +5,7 @@ import { getCollection, getEntry, render } from "astro:content";
 const profileEntry = await getEntry("profile", "home");
 const competenciesEntry = await getEntry("competencies", "core");
 const experience = (await getCollection("experience")).sort(
-  (a, b) => a.data.order - b.data.order,
+  (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime(),
 );
 const education = (await getCollection("education")).sort(
   (a, b) => a.data.order - b.data.order,
@@ -156,11 +156,17 @@ const emailCodes = profile.email
         window.scrollTo({ top: 0, left: 0, behavior: "instant" });
         document.body.classList.remove("is-booting");
         document.body.classList.add("boot-complete");
+        window.setTimeout(() => {
+          document.body.classList.remove("boot-complete");
+        }, 1600);
       }, duration);
     } else {
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
       document.body.classList.remove("is-booting");
       document.body.classList.add("boot-complete");
+      window.setTimeout(() => {
+        document.body.classList.remove("boot-complete");
+      }, 1600);
     }
 
     // Reveal on scroll

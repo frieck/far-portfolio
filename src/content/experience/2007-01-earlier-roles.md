@@ -1,5 +1,5 @@
 ---
-order: 6
+startDate: "2007-01-01"
 role: "Software Engineer / Technical Lead / Software Architect"
 company: "Neogrid, TOTVS & CALDSoft Sistemas"
 period: "2007 — 2019"

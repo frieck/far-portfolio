@@ -1,5 +1,5 @@
 ---
-order: 3
+startDate: "2021-02-01"
 role: "Senior Software Specialist"
 company: "Atlassian (via e-Core)"
 period: "Feb 2021 — Jun 2025"

@@ -35,7 +35,7 @@ const experience = defineCollection({
     base: "./src/content/experience",
   }),
   schema: z.object({
-    order: z.number(),
+    startDate: z.coerce.date(),
     role: z.string(),
     company: z.string(),
     period: z.string(),
