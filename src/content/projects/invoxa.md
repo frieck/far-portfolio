@@ -11,7 +11,7 @@ stack:
   - "SQLite"
   - "Mantine"
 highlights:
-  - "Full invoice lifecycle — clients, suppliers, templates, and incremental numbering — with native PDF export."
+  - "Full invoice lifecycle, covering clients, suppliers, templates, and incremental numbering, with native PDF export."
   - "Bilingual interface (Portuguese/English) with monthly and annual revenue reports and charts."
-  - "Local-first SQLite storage with light, dark, and auto theming."
+  - "Local-first SQLite storage, with a light, dark, or OS-matched theme for the interface."
 ---
