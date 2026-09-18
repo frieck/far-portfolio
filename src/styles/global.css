@@ -406,20 +406,16 @@ h4 {
   box-shadow: 0 0 18px rgba(var(--neon-rgb), 0.2);
 }
 
-.project-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.project-header h4 {
-  margin: 0;
-}
 .project-icon {
-  flex: 0 0 auto;
-  width: 26px;
-  height: 26px;
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 30px;
+  height: 30px;
   color: var(--neon);
-  filter: drop-shadow(0 0 6px rgba(var(--neon-rgb), 0.5));
+  opacity: 0.8;
+  filter: drop-shadow(0 0 4px rgba(var(--neon-rgb), 0.35));
+  pointer-events: none;
 }
 .project-icon svg {
   display: block;

@@ -127,13 +127,7 @@ const emailCodes = profile.email
         projects.map((item) => (
           <article class="card timeline-item tilt-card">
             <div class="timeline-dot" />
-            <div class="project-header">
-              <span
-                class="project-icon"
-                set:html={projectIcons[item.data.name.toLowerCase()]}
-              />
-              <h4>{item.data.name}</h4>
-            </div>
+            <h4>{item.data.name}</h4>
             <p class="company">{item.data.tagline}</p>
             <ul>
               {item.data.highlights.map((h) => (
@@ -154,6 +148,10 @@ const emailCodes = profile.email
                 <span class="project-status">{item.data.status}</span>
               )}
             </div>
+            <span
+              class="project-icon"
+              set:html={projectIcons[item.data.name.toLowerCase()]}
+            />
           </article>
         ))
       }
