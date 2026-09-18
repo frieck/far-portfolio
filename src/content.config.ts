@@ -46,6 +46,22 @@ const experience = defineCollection({
   }),
 });
 
+const projects = defineCollection({
+  loader: glob({
+    pattern: "**/*.md",
+    base: "./src/content/projects",
+  }),
+  schema: z.object({
+    order: z.number(),
+    name: z.string(),
+    tagline: z.string(),
+    repoUrl: z.string().url(),
+    status: z.string().optional(),
+    stack: z.array(z.string()),
+    highlights: z.array(z.string()),
+  }),
+});
+
 const education = defineCollection({
   loader: glob({
     pattern: "**/*.md",
@@ -60,4 +76,10 @@ const education = defineCollection({
   }),
 });
 
-export const collections = { profile, competencies, experience, education };
+export const collections = {
+  profile,
+  competencies,
+  experience,
+  projects,
+  education,
+};

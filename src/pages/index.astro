@@ -7,6 +7,9 @@ const competenciesEntry = await getEntry("competencies", "core");
 const experience = (await getCollection("experience")).sort(
   (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime(),
 );
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 const education = (await getCollection("education")).sort(
   (a, b) => a.data.order - b.data.order,
 );
@@ -106,6 +109,40 @@ const emailCodes = profile.email
               ))}
             </ul>
             <p class="stack">{item.data.technologies.join(" • ")}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h3>Projects</h3>
+    <div class="timeline">
+      {
+        projects.map((item) => (
+          <article class="card timeline-item tilt-card">
+            <div class="timeline-dot" />
+            <h4>{item.data.name}</h4>
+            <p class="company">{item.data.tagline}</p>
+            <ul>
+              {item.data.highlights.map((h) => (
+                <li>{h}</li>
+              ))}
+            </ul>
+            <p class="stack">{item.data.stack.join(" • ")}</p>
+            <div class="hero-actions project-actions">
+              <a
+                class="btn"
+                href={item.data.repoUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub ↗
+              </a>
+              {item.data.status && (
+                <span class="project-status">{item.data.status}</span>
+              )}
+            </div>
           </article>
         ))
       }

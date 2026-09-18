@@ -1,0 +1,27 @@
+---
+startDate: "2025-10-01"
+role: "Founder & Principal Software Engineer"
+company: "FARSystems"
+period: "Oct 2025 — Present"
+location: "Remote"
+technologies:
+  - "Node.js"
+  - "TypeScript"
+  - "React"
+  - "Angular"
+  - "PHP"
+  - "Python"
+  - "GraphQL"
+  - "REST APIs"
+  - "SQL/NoSQL"
+  - "Docker"
+  - "AWS"
+  - "Azure"
+  - "Claude Code"
+  - "Cursor"
+  - "Codex"
+highlights:
+  - "Founded and operate an independent software engineering consultancy serving international product organizations, personally delivering full-stack development, software architecture, technical leadership, and platform modernization."
+  - "Work with distributed client teams from discovery and solution design through implementation, testing, code review, and production delivery across web applications, SaaS platforms, cloud systems, and AI-enabled products."
+  - "Apply AI-assisted and agentic workflows with Claude Code, Cursor, Codex, and LLMs to accelerate delivery while retaining full responsibility for architecture, security, code quality, and final technical decisions."
+---

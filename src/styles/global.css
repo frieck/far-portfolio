@@ -406,6 +406,16 @@ h4 {
   box-shadow: 0 0 18px rgba(var(--neon-rgb), 0.2);
 }
 
+.project-actions {
+  align-items: center;
+  margin-top: 12px;
+}
+.project-status {
+  color: var(--muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+}
+
 .timeline {
   display: grid;
   gap: 12px;
