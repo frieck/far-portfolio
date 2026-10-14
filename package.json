@@ -13,10 +13,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^5.0.7",
+    "@astrojs/react": "7.0.1",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
-    "astro": "^6.4.4",
+    "astro": "7.3.8",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "three": "^0.184.0"
