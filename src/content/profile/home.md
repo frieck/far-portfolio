@@ -2,7 +2,6 @@
 name: "Felipe Augusto Rieck"
 role: "Staff / Principal Full-Stack Engineer"
 lead: "I build and modernize software products, combining hands-on engineering with software architecture and technical leadership. My work spans reusable enterprise platforms, full-stack applications, and AI-enabled products."
-yearsOfExperience: 18
 pillars:
   - "Architecture"
   - "Product"

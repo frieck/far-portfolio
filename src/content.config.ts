@@ -10,7 +10,6 @@ const profile = defineCollection({
     name: z.string(),
     role: z.string(),
     lead: z.string(),
-    yearsOfExperience: z.number(),
     pillars: z.array(z.string()).length(3),
     email: z.string().email(),
     linkedin: z.string().url(),

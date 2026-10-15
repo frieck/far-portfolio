@@ -34,6 +34,20 @@ if (!profileEntry || !competenciesEntry) {
 const profile = profileEntry.data;
 const competencies = competenciesEntry.data;
 const { Content: ProfileContent } = await render(profileEntry);
+// Years of experience count from the earliest role. The build renders the
+// value as a fallback and the page script recalculates it on each visit.
+const careerStart = new Date(
+  Math.min(...experience.map((item) => item.data.startDate.getTime())),
+);
+const fullYearsSince = (start: Date, now: Date) => {
+  const years = now.getUTCFullYear() - start.getUTCFullYear();
+  const beforeAnniversary =
+    now.getUTCMonth() < start.getUTCMonth() ||
+    (now.getUTCMonth() === start.getUTCMonth() &&
+      now.getUTCDate() < start.getUTCDate());
+  return beforeAnniversary ? years - 1 : years;
+};
+const yearsOfExperience = fullYearsSince(careerStart, new Date());
 const emailCodes = profile.email
   .split("")
   .map((char) => char.charCodeAt(0) + 11)
@@ -51,12 +65,16 @@ const emailCodes = profile.email
   </nav>
 
   <section class="hero card reveal">
+    <p class="hero-kicker">
+      <span>
+        <span data-career-start={careerStart.toISOString()}
+          >{yearsOfExperience}</span
+        >+ years of experience
+      </span>
+      {profile.pillars.map((pillar) => <span>{pillar}</span>)}
+    </p>
     <div class="hero-grid">
       <div class="hero-copy">
-        <p class="hero-kicker">
-          <span>{profile.yearsOfExperience}+ years</span>
-          {profile.pillars.map((pillar) => <span>{pillar}</span>)}
-        </p>
         <h1>{profile.name}</h1>
         <p class="hero-role">{profile.role}</p>
         <p class="lead">{profile.lead}</p>
@@ -277,6 +295,24 @@ const emailCodes = profile.email
         glow.style.top = `${e.clientY}px`;
       }
     });
+
+    // Years of experience, recalculated from the earliest role's start date.
+    const yearsEl = document.querySelector("[data-career-start]");
+    if (yearsEl) {
+      const start = new Date(yearsEl.getAttribute("data-career-start") || "");
+      const now = new Date();
+      if (!Number.isNaN(start.getTime())) {
+        let years = now.getUTCFullYear() - start.getUTCFullYear();
+        if (
+          now.getUTCMonth() < start.getUTCMonth() ||
+          (now.getUTCMonth() === start.getUTCMonth() &&
+            now.getUTCDate() < start.getUTCDate())
+        ) {
+          years -= 1;
+        }
+        yearsEl.textContent = String(years);
+      }
+    }
 
     // Contact link: the address ships obfuscated and becomes a mailto on load.
     const contactLink = document.querySelector("[data-contact-codes]");
