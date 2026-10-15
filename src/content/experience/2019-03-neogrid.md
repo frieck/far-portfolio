@@ -19,12 +19,11 @@ technologies:
   - "TDD"
   - "REST APIs"
   - "MVC frameworks"
+caseStudy: "neogrid-product-foundation"
 highlights:
   - "Led frontend and backend architecture decisions for business-critical systems built for strategic customers in the Special Projects division."
-  - "Drove technical initiatives across teams, guiding architecture patterns, implementation approaches, and engineering standards for complex product environments."
+  - "Built a shared Angular and NestJS product foundation, integrated with Neogrid's multi-tenant architecture, that cut delivery time for customized products from 6–10 months to 3–4 months."
   - "Led the rollout of microservices architecture and mentored engineers across Node.js, NestJS, GraphQL, Spring Boot, and Quarkus."
-  - "Led the front-end modernization of legacy enterprise products, defining a new visual identity and driving the migration from a JSF-based framework to a reusable Angular component architecture."
-  - "Built a shared UI framework and reusable component foundation that improved product consistency, usability, and development speed across multiple applications."
-  - "Partnered with product and engineering stakeholders to translate business requirements into scalable front-end architecture and better user workflows."
+  - "Led the frontend modernization of legacy enterprise products, migrating from a JSF-based framework to a reusable Angular component architecture with a new visual identity and a shared UI framework across multiple applications."
   - "Supported cloud adoption and modernization initiatives, helping teams evolve toward more scalable and maintainable architectures."
 ---
