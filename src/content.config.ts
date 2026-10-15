@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 const profile = defineCollection({
@@ -7,10 +7,11 @@ const profile = defineCollection({
     base: "./src/content/profile",
   }),
   schema: z.object({
-    bootMessage: z.string(),
     name: z.string(),
     role: z.string(),
     lead: z.string(),
+    yearsOfExperience: z.number(),
+    pillars: z.array(z.string()).length(3),
     email: z.string().email(),
     linkedin: z.string().url(),
     location: z.string(),
@@ -37,12 +38,14 @@ const experience = defineCollection({
   }),
   schema: z.object({
     startDate: z.coerce.date(),
+    current: z.boolean().default(false),
     role: z.string(),
     company: z.string(),
     period: z.string(),
     location: z.string().optional(),
     technologies: z.array(z.string()),
     highlights: z.array(z.string()),
+    caseStudy: reference("cases").optional(),
   }),
 });
 
@@ -59,6 +62,37 @@ const projects = defineCollection({
     status: z.string().optional(),
     stack: z.array(z.string()),
     highlights: z.array(z.string()),
+  }),
+});
+
+const cases = defineCollection({
+  loader: glob({
+    pattern: "**/*.md",
+    base: "./src/content/cases",
+  }),
+  schema: z.object({
+    order: z.number(),
+    title: z.string(),
+    summary: z.string(),
+    // Longer opening for the case page; the card uses `summary`.
+    intro: z.string().optional(),
+    company: z.string(),
+    // Contracting company, e.g. "e-Core" renders as "Atlassian via e-Core".
+    via: z.string().optional(),
+    role: z.string(),
+    period: z.string().optional(),
+    metric: z
+      .object({
+        label: z.string(),
+        // Scope of the measurement, shown with the metric on card and page.
+        caption: z.string().optional(),
+        before: z.string(),
+        after: z.string(),
+      })
+      .optional(),
+    stack: z.array(z.string()).optional(),
+    // Used instead of `stack` when the technologies are not confirmed.
+    focus: z.array(z.string()).optional(),
   }),
 });
 
@@ -81,5 +115,6 @@ export const collections = {
   competencies,
   experience,
   projects,
+  cases,
   education,
 };

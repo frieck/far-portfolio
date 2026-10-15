@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const cases = await getCollection("cases");
+  return cases.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const data = entry.data;
+---
+
+<BaseLayout
+  title={`${data.title} | Felipe Augusto Rieck`}
+  description={data.summary}
+>
+  <a class="case-back" href="/">← Back to portfolio</a>
+
+  <header class="hero card case-hero">
+    <p class="hero-kicker">
+      <span>Case study</span>
+      <span>{data.via ? `${data.company} via ${data.via}` : data.company}</span>
+      {data.period && <span>{data.period}</span>}
+    </p>
+    <h1>{data.title}</h1>
+    <p class="hero-role">{data.role}</p>
+    <p class="lead">{data.intro ?? data.summary}</p>
+    {
+      data.metric && (
+        <div class="case-metric case-metric-large">
+          <span class="case-metric-label">{data.metric.label}</span>
+          <span class="case-metric-before">{data.metric.before}</span>
+          <span class="case-metric-result">
+            <span class="case-metric-arrow" aria-hidden="true">→</span>
+            <span class="sr-only">to</span>
+            <span class="case-metric-after">{data.metric.after}</span>
+          </span>
+          {data.metric.caption && (
+            <span class="case-metric-caption">{data.metric.caption}</span>
+          )}
+        </div>
+      )
+    }
+  </header>
+
+  <article class="card case-body">
+    <Content />
+  </article>
+
+  {
+    data.stack && (
+      <section>
+        <h2 class="section-title">Stack</h2>
+        <article class="card chips">
+          {data.stack.map((item) => <span>{item}</span>)}
+        </article>
+      </section>
+    )
+  }
+  {
+    data.focus && (
+      <section>
+        <h2 class="section-title">Focus</h2>
+        <article class="card chips">
+          {data.focus.map((item) => <span>{item}</span>)}
+        </article>
+      </section>
+    )
+  }
+
+  <a class="case-back" href="/#selected-work">← All cases</a>
+</BaseLayout>
